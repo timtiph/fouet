@@ -6,7 +6,7 @@
     "popper.js": "^1.16.1",
     "sass": "^1.57.1"
   },
-  "name": "moine-tiphany_projet-php",
+  "name": "fouet",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -14,14 +14,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/timtiph/MOINE-Tiphany_projet-PHP.git"
+    "url": "git+https://github.com/timtiph/fouet.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/timtiph/MOINE-Tiphany_projet-PHP/issues"
+    "url": "https://github.com/timtiph/fouet/issues"
   },
-  "homepage": "https://github.com/timtiph/MOINE-Tiphany_projet-PHP#readme",
+  "homepage": "https://github.com/timtiph/fouet#readme",
+  "devDependencies": {},
   "description": ""
 }
