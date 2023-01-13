@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="img/fouet.png" type="image/x-icon">
+
+    <title>Inscription | Les magiciens du Fouet | Tiphany</title>
+</head>
+
+<body>
+    {% include "includes/header.html" %}
+
+
+    <div class="formulaire">
+
+        <div class="flex flex-col items-center">
+            <h2 class="text-center text-main-red m-auto">
+                Rejoignez-nous !
+            </h2>
+            <p class="mt-2 text-center ">
+                Déjà inscrit(e)?
+                <a href="{{ route('login.form') }}" class="text-main-red hover">
+                    Connectez-vous
+                </a>
+            </p>
+        </div>
+
+
+
+        <h3 class="text-main-red text-center m-5">Formulaire d'inscription</h3>
+
+        <form action="{{ route('register.request') }}" method="POST" enctype="multipart/form-data" novalidate
+            class="mx-3 d-flex flex-column">
+            {{ csrf_field()|raw }}
+            <div class="mb-3 d-flex flex-column flex-sm-row ">
+                <label for="name" class="col-sm-4 col-form-label text-main-blue">Nom complet</label>
+                <div class="col-sm-8">
+                    <input name="name" id="name" type="text" value="{{ old('name') }}" class="col-8 form-control"
+                        placeholder="Nom complet" required>
+                </div>
+            </div>
+
+            <div class="mb-3 d-flex flex-column flex-sm-row">
+                <label for="email" class="col-4 col-form-label text-main-blue">Email</label>
+                <div class="col-sm-8">
+                    <input name="email" type="email" class="form-control" id="email" value="{{ old('email') }}"
+                        placeholder="Adresse e-mail" required>
+                </div>
+            </div>
+
+
+            <div class="mb-3 d-flex flex-column flex-sm-row">
+                <label for="password" class="col-4 col-form-label text-main-blue">Mot de passe</label>
+
+                <div class="col-sm-8">
+                    <input name="password" type="password" class="form-control form-label text-main-blue" id="password"
+                        placeholder="Mot de passe" required>
+                </div>
+            </div>
+
+            <div class="mb-3 d-flex flex-column flex-sm-row">
+                <label for="password" class="col-4 col-form-label text-main-blue">Confirmation mot de passe</label>
+
+                <div class="col-sm-8">
+                    <input name="password_confirmation" type="password" class="form-control form-label text-main-blue"
+                        id="password_confirmation" placeholder="Confirmation Mot de passe" required>
+                </div>
+            </div>
+
+            <div class="mb-3 d-flex flex-column flex-sm-row">
+                <label for="file" class="text-main-blue col-4">Votre photo</label>
+                <div class="col-sm-8">
+                    <input type="file" name="file" id="file" class="form-control" aria-describedby="file">
+                </div>
+            </div>
+            {% if errors('file') %}
+            <p class="">{{ errors('file')[0] }}</p>
+            {% endif %}
+
+
+
+            <div class="my-4 mx-auto">
+                <button type="submit" class="btn btn-main-red btn-outline-white-1 hover">S'inscrire</button>
+            </div>
+
+
+            {% if errors() %}
+            <div class="p-3">
+                <ul class="text-main-red">
+                    {% for error in errors() %}
+                    <li class="text-main-red m-2"> <img src="/img/Warning_circle.png" alt="Warning_circle"
+                            class="warning_circle">{{ error }} </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+
+        </form>
+
+    </div>
+
+
+    {% include "includes/footer.html" %}
+
+</body>
+
+</html>

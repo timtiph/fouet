@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.3.0-alpha1",
+    "mailhog": "^4.16.0",
+    "popper.js": "^1.16.1",
+    "sass": "^1.57.1"
+  },
+  "name": "moine-tiphany_projet-php",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch public/sass/global.scss:public/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timtiph/MOINE-Tiphany_projet-PHP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timtiph/MOINE-Tiphany_projet-PHP/issues"
+  },
+  "homepage": "https://github.com/timtiph/MOINE-Tiphany_projet-PHP#readme",
+  "description": ""
+}

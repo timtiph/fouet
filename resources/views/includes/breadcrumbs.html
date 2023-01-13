@@ -1,0 +1,25 @@
+<script type="text/javascript">
+  function breadcrumb() {
+    var url = self.location.pathname, myLink,
+      spanAppend = document.getElementById('ariane');
+    var i = -1;
+    var elem = url.split('/');
+    elem.shift()
+    var train = new Array()
+    while (elem[++i]) {
+      train.push(elem[i].replace(/(.*)/, '<a href="' + elem.slice(0, i + 1).join("/") + '"> $1 </a>'));
+    }
+    spanAppend.innerHTML = train.join(' > ')
+  }
+</script>
+
+
+<body onload="breadcrumb()">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="px-2">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Vous êtes à</li>
+      <li class="breadcrumb-item"><a href="{{ route('index') }}" class="ariane">Les Magiciens du Fouet</a></li>
+      <li class="breadcrumb-item" aria-current="{{ recette.title }}"><span id="ariane"></span></li>
+    </ol>
+  </nav>
+</body>

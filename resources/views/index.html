@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="img/fouet.png" type="image/x-icon">
+
+    <title>Les magiciens du Fouet | Tiphany</title>
+</head>
+
+
+<body>
+    <header class="d-flex flex-lg-row flex-column justify-content-lg-between w-lg-100">
+        <div class="d-flex justify-content-center align-items-center m-xs-1 m-3 m-lg-5 w-lg-25">
+
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="m-1 hover">
+                <img src="img/insta.png" alt="picto instagram">
+            </a>
+
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="hover m-1">
+                <img src="img/FB.png" alt="picto face book" class="reseau">
+            </a>
+
+            <a href="https://www.pinterest.fr/" target="_blank" rel="noopener noreferrer" class="m-1 hover">
+                <img src="img/Pinterest.png" alt="picto pinterest">
+            </a>
+
+        </div>
+
+
+        <div class="centre d-flex flex-column justify-content-center m-3 w-lg-50">
+            <div class="hover d-flex m-auto justify-content-center mb-2">
+                <a href="{{ route('index') }}">
+                    <img src="img/logo.png" alt="Logo Les magiciens du fouet" class="img-fluid">
+                </a>
+            </div>
+
+            <nav class="container-fluid py-2 mx-auto my-3 w-100 navbar navbar-collapse">
+                <ul class="container-fluid nav-bar list-unstyled">
+
+                    <li class="nav-item"><a href="{{ route('index') }}" class="mx-3 my-auto mb-1 hover "><img
+                                src="img/home.png" alt="picto home"></a></li>
+                    <li class="nav-item"><a href="javascript:history.go(-1)" class="mx-3 my-auto hover"><img
+                                src="img/back.png" alt="picto retour"></a></li>
+
+                    <li class="nav-item"><a href="{{ route('contact') }}"
+                            class="hover mx-3 my-auto text-decoration-none text-uppercase text-beige-2 fs-6">contact</a>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+
+        <ul class="droit d-flex justify-content-evenly flex-lg-column m-lg-auto mx-lg-5 w-lg-25 h-75">
+            <li class="d-flex justify-content-between flex-grow-1 border-bottom border-beige-2 pb-2 m-3">
+                <a href="{{ route('home') }}"
+                    class="text-beige-2 text-uppercase fs-6 mx-lg-2 hover text-decoration-none">cuisinier</a>
+                <img src="img/Login.png" alt="picto login" style="width: 25px; height: 25px;">
+            </li>
+        </ul>
+
+    </header>
+
+
+
+
+
+
+
+    <div class="d-flex flex-column align-item-center justify-content-center">
+        <h4 class="text-center text-main-red text-uppercase">Derniere recette</h4>
+    </div>
+    {% if recettes[0] %}
+
+    <article class="d-flex">
+        <div class="container mx-auto my-3">
+            <a href="{{ route('recettes.show', {slug: recettes[0].slug}) }}">
+                <img src="img/{{ recettes[0].img }}" alt="{{ recettes[0].title }}" class="my-3 m-auto img-fluid full"
+                    style="width: 400px; height: auto;">
+                <h4 class="centered">{{ recettes[0].title }}</h4>
+            </a>
+        </div>
+    </article>
+    {% endif %}
+
+    <div class="d-flex flex-column align-item-center justify-content-center">
+        <h4 class="text-center text-main-red text-uppercase">Toutes nos recettes</h4>
+    </div>
+
+    <div class="d-flex flex-wrap justify-content-evenly ">
+        {% for recette in recettes %}
+        <article class="d-flex ">
+            <div class="container-little mx-auto my-3">
+                <a href="{{ route('recettes.show', {slug: recette.slug}) }}" class="">
+                    <img src="img/{{ recette.img }}" alt="{{ recette.img }}" class="my-2 m-auto img-fluid full"
+                        style="width: 300px; height: auto;">
+                    <h4 class="centered-little">{{ recette.title }}</h4>
+                </a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+
+    <div>
+
+
+
+    
+        <div class="d-flex flex-column align-item-center justify-content-center">
+            <h4 class="text-center text-main-red text-uppercase my-5">Nos cuisiniers</h4>
+        </div>
+    
+        <div class="d-flex flex-wrap justify-content-evenly ">
+            {% for cuisinier in cuisiniers %}
+            <article class="d-flex">
+                <div class="container-little mx-auto my-3" style="width: 300px; height: 300px;">
+                    <a href="{{ route('cuisiniers.showCook', {slug: cuisinier.slug}) }}" class="">
+                        <img src="img/{{ cuisinier.img }}" alt="{{ cuisinier.img }}" class="full">
+                        <h4 class="centered-little">{{ cuisinier.name }}</h4>
+                    </a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer class="footer m-auto">
+
+        <div class="hover">
+            <a href="{{ route('index') }}"><img src="img/logo.png" alt="Logo Les magiciens du fouet" class="img-fluid"
+                    style="width: 150px; height: inherit;"></a>
+        </div>
+        <p class="mdf">MDF 2022 - Développement Tiphany MOINE</p>
+    </footer>
+
+</body>
+
+</html>

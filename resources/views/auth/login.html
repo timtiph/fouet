@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="img/fouet.png" type="image/x-icon">
+
+    <title>Connexion | Les magiciens du Fouet | Tiphany</title>
+</head>
+
+<body>
+    {% include "includes/header.html" %}
+
+
+    <!-- <div class="flex flex-col items-center">
+        <h2 class="text-center text-main-red">
+            Heureux de vous revoir !
+        </h2>
+
+    </div> -->
+
+    <div class="formulaire">
+
+        {% if errors() %}
+        <div class="d-flex mx-5 align-items-center">
+            <img src="/img/Warning_circle.png" alt="Warning_circle" class="m-2 warning_circle">
+            <p class="text-main-red m-2">
+                {{ errors()[0] }}
+            </p>
+        </div>
+        {% endif %}
+
+        <!-- <h3 class="text-main-red text-center m-5 ">Cuisinier ?</h3> -->
+        <h4 class="text-main-red text-center m-5 ">identifiez-vous</h4>
+
+        <form action="{{ route('login.request') }}" method="POST" novalidate class="mx-3">
+            {{ csrf_field()|raw }}
+            <div class="mb-3 row">
+                <label for="email" class="col-4 col-form-label text-main-blue">Votre Email</label>
+                <div class="col-8">
+                    <input name="email" id="email" type="email" value="{{ old('email') }}" placeholder="Adresse e-mail"
+                        class="form-control">
+                </div>
+            </div>
+
+
+            <div class="mb-3 row">
+                <label for="password" class="col-4 col-form-label text-main-blue">Votre mot de passe</label>
+                <div class="col-8">
+                    <input name="password" type="password" placeholder="Mot de passe" id="password"
+                        class="form-control">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="d-flex justify-content-center m-auto">
+                    <button type="submit" class="btn btn-main-red my-5">Se connecter</button>
+                </div>
+            </div>
+
+
+
+
+        </form>
+
+        <div class="flex flex-col items-center">
+            <h4 class="text-center text-main-red m-auto">
+                Vous n'etes pas encore inscrit(e) ?
+            </h4>
+            <p class="mt-2 text-center ">
+                <a href="{{ route('register.form') }}" class="text-main-red hover">
+                    Inscrivez-vous
+                </a>
+            </p>
+        </div>
+
+    </div>
+
+
+    {% include "includes/footer.html" %}
+
+</body>
+
+</html>

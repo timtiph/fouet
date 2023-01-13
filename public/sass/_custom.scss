@@ -1,0 +1,281 @@
+// GLOBAL
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+  background: #FCFCFC;
+  max-width: 1100px;
+  height: 100%;
+  margin: auto;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+
+.hover:hover {
+  opacity: 0.5;
+  transition: .2s ease-in-out;
+}
+
+// button {
+//   max-width: 220px;
+//   max-height: 40px;
+// }
+
+.nav-header{
+  max-width: 350px;
+}
+
+.list-group-custom {
+  border: none;
+  background: transparent;
+  text-transform: uppercase;
+}
+
+.list-group-custom a {
+  text-decoration: none;
+  color: #B68963;
+}
+
+.ariane {
+  color: #BA4745;
+}
+
+.ariane:hover {
+  color: #BA4745;
+  opacity: 0.5;
+  transition: .2s ease-in-out;
+}
+
+ol {
+  text-decoration: none;
+}
+
+#ariane::before::after {
+  text-decoration: none;
+  color: #7C7777;
+
+}
+
+.formulaire {
+  margin-top: 50px;
+  font-size: 18px;
+}
+
+#password,
+#password_old,
+#password_confirmation,
+#email,
+#name,
+#nom,
+#phone,
+#message,
+#title,
+#difficulty,
+#cout,
+#temps,
+#time,
+#description,
+#essai,
+#ingredients,
+#nb_pax,
+// #img,
+#etapes {
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-bottom-color: #2C72AD;
+}
+
+#password::placeholder,
+#password_old::placeholder,
+#password_confirmation::placeholder,
+#email::placeholder,
+#name::placeholder,
+#name::placeholder,
+#phone::placeholder,
+#message::placeholder,
+#title::placeholder,
+#difficulty::placeholder,
+#cout::placeholder,
+#temps::placeholder,
+#time::placeholder,
+#description::placeholder,
+#ingredients::placeholder,
+#nb_pax::placeholder,
+// #img::placeholder,
+#etapes::placeholder {
+  color: #7C7777;
+  opacity: 0.5;
+}
+
+// *********************CARD INDEX
+
+.container {
+  position: relative;
+  text-align: center;
+  overflow-wrap: break-word;
+  color: #FCFCFC;
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  max-width: 350px;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container>a {
+  text-decoration: none;
+  color: #FCFCFC;
+  text-shadow: #2C72AD 1px 0 10px;
+}
+
+.container-little {
+  position: relative;
+  text-align: center;
+  color: #FCFCFC;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.container-little>a {
+  text-decoration: none;
+  color: #FCFCFC;
+  text-shadow: #2C72AD 1px 0 10px;
+}
+
+.container-little>a>img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.centered-little {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.full {
+  width: 200px;
+  height: auto;
+}
+
+.full:hover {
+  -webkit-transform: scale(1.25);
+  /* Safari and Chrome */
+  -moz-transform: scale(1.25);
+  /* Firefox */
+  -ms-transform: scale(1.25);
+  /* IE 9 */
+  -o-transform: scale(1.25);
+  /* Opera */
+  transform: scale(1.25);
+}
+
+// *********************CARD INDEX
+
+
+//**********************Page CONTACT
+
+.message {
+  width: 90%;
+}
+
+textarea {
+  resize: none;
+}
+
+.adresse img .phone img {
+  width: 35px;
+  height: 37px;
+}
+
+//************************ WARNING-CIRCLE
+
+.warning_circle {
+  width: 20px;
+  height: 20px;
+}
+
+//********************** € et difficulté
+
+.circle {
+  margin: 3px;
+  width: 35px;
+  background: rgb(186, 71, 69, 0.4);
+  border: solid 4px #BA4745;
+  height: 35px;
+  border-radius: 100px;
+  text-align: center;
+  color: #BA4745;
+}
+
+.circle>span {
+  margin: auto;
+}
+
+
+//**********************photo recette
+
+
+.img_recette {
+  max-width: 500px;
+}
+
+
+
+//**********************liste ingrédients
+
+.list-item {
+  list-style-image: url("/public/img/fouet-red.png");
+  margin-left: 50px;
+}
+
+.list-item-etape {
+  list-style-type: decimal;
+  margin-left: 50px;
+}
+
+// ********************  ERREUR
+
+.erreur {
+  display: flex;
+
+}
+
+
+//********************** FOOTER
+
+
+footer {
+  display: flex;
+  height: 100px;
+  max-width: 1100px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.mdf {
+  font-size: 12px;
+  color: #2C72AD;
+  text-align: center;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/img/fouet.png" type="image/x-icon">
+
+    <title>Contact | Les magiciens du Fouet | Tiphany</title>
+</head>
+
+<body>
+
+
+    {% include "includes/header.html" %}
+    {% include "includes/breadcrumbs.html" %}
+  
+<h1>Attention, page non finalisée. Votre demande de contact n'aboutira pas!!</h1>
+    <div class="d-flex flex-column flex-lg-row">
+
+        <div class="contact order-2 order-lg-1 col-lg-8 p-3">
+
+            <div class="d-flex justify-content-between">
+                <h5 class="text-main-blue my-3">Écrivez-nous</h5>
+                <img src="/img/Enveloppe.png" alt="Enveloppe" style="width: 40px; height: 22px;" class="my-3">
+            </div>
+
+            <div class="mb-3 text-main-blue">
+                <label for="name" class="form-label">Nom</label>
+                <input type="name" class="form-control" id="name" placeholder="">
+            </div>
+
+            <div class="mb-3 text-main-blue">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="">
+            </div>
+
+            <div class="mb-3 text-main-blue">
+                <label for="phone" class="form-label">Téléphone</label>
+                <input type="phone" class="form-control" id="phone" placeholder="">
+            </div>
+
+
+            <div class="mb-3 text-main-blue d-flex justify-content-between">
+                <div class="message">
+                    <label for="message" class="form-label">Votre message</label>
+                    <textarea class="form-control" id="message" rows="3"></textarea>
+                </div>
+                <div class="image d-flex align-items-end">
+                    <img src="/img/envoyer.png" alt="picto envoyer">
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="info d-flex bg-main-blue flex-column order-1 order-lg-2 col-lg-4 p-3">
+            <h5 class="text-light my-3 text-center">Informations de contact</h5>
+
+            <div class="d-flex flex-column flex-md-row flex-lg-column justify-content-evenly my-4">
+
+
+                <div class="adresse d-flex px-3 mb-4 justify-content-evenly align-items-center">
+                    <img src="/img/location.png" alt="picto location" class="col-2"
+                        style="  width: 35px; height: 37px;">
+                    <address class="text-light m-0 col-9">Grande Rue <br> 12345 Ville </address>
+                </div>
+                <div class="phone d-flex px-3 mb-4 justify-content-evenly align-items-center">
+                    <img src="/img/phone.png" alt="picto telephone" class="col-2"
+                        style="  width: 29px; height: 33px;">
+                    <p class="text-light col-9 text-nowrap">+33 6 66 11 88 11</p>
+                </div>
+                <div class="email d-flex px-3 mb-4 justify-content-evenly align-items-center">
+                    <img src="/img/Enveloppe-email.png" alt="Enveloppe envoi email" class="col-2"
+                        style="  width: 33px; height: 33px;">
+                    <p class="text-light col-9">info@lesmagiciensdufouet.fr</p>
+                </div>
+
+            </div>
+
+
+            <div class="d-flex mt-auto mb-3 justify-content-center">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="m-1 hover">
+                    <img src="/img/insta_white.png" alt="instagram" style="width: 36px; height: 36px;" class="mx-2">
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="hover m-1">
+                    <img src="/img/FB_white.png" alt="facebook" style="width: 36px; height: 36px;" class="mx-2">
+                </a>
+                <a href="https://www.pinterest.fr/" target="_blank" rel="noopener noreferrer" class="m-1 hover">
+                    <img src="/img/pinterest_white.png" alt="pinterest" style="width: 36px; height: 36px;" class="mx-2">
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    {% include "includes/footer.html" %}
+
+
+</body>
+
+</html>

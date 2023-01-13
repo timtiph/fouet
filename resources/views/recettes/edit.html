@@ -1,0 +1,262 @@
+<!-- Page EDITE recettes -->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/img/fouet.png" type="image/x-icon">
+
+    <title>Créer une recette | Les magiciens du Fouet | Tiphany</title>
+</head>
+
+<!-- PAGE CREATION DE RECETTE -->
+
+
+
+
+
+
+<body class="antialiased">
+    {% include "includes/header.html" %}
+    {% include "includes/breadcrumbs.html" %}
+
+
+    {% if auth().check() %}
+
+    <div class="d-flex flex-column mt-3">
+        <div class="my-4">
+            <h4 class="text-main-red text-center">
+                Modifier la recette <span class="fw-bolder">{{ recette.title }}</span>
+            </h4>
+            <div class="d-flex flex-column align-items-end justify-content-end me-3">
+                <p class="fst-italic text-secondary fs-6">
+                    Attention, la recette sera mise à jour dès que vous cliquerez sur le bouton "Modifier".
+                </p>
+                <p class="fst-italic text-secondary fs-6">
+                    Vous devez modifier TOUS les champs
+                </p>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            
+            <form action="{{ route('recettes.update', {slug: recette.slug}) }}" method="POST" class="form-control m-2"
+            novalidate>
+
+            <!-- TITRE -->
+                <div class="d-flex flex-column mt-2">
+                    {{ csrf_field()|raw }}
+                    {{ method('PATCH')|raw }}
+                    <div class="d-flex flex-column flex-sm-row align-items-center">
+                        <label for="title" class="form-label text-main-blue col-sm-2">
+                            Titre
+                        </label>
+                        <input id="title" name="title" value="{{ old('title', recettes.title) }}" type="text"
+                            class="form-control mx-2">
+
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-end">
+                        {% if errors('title') %}
+                        <img src="/img/Warning_circle.png" alt="Warning_circle" class="m-1 warning_circle">
+                        {% endif %}
+                        {% if errors('title') %}
+                        <p class="text-danger text-uppercase m-1">{{ errors('title')[0] }}</p>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+
+                <!-- DIFFICULTE -->
+                <div class="d-flex flex-column mt-2">
+                    {{ csrf_field()|raw }}
+                    {{ method('PATCH')|raw }}
+                    <div class="d-flex flex-column flex-sm-row align-items-center">
+                        <label for="difficulty" class="form-label text-main-blue col-sm-2">
+                            Difficulté
+                        </label>
+                        <select name="difficulty" id="difficulty" class="form-select mx-2">
+                            <option value="">--Choisissez une difficulté--</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-end">
+                        {% if errors('difficulty') %}
+                        <img src="/img/Warning_circle.png" alt="Warning_circle" class="m-1 warning_circle">
+                        {% endif %}
+                        {% if errors('difficulty') %}
+                        <p class="text-danger text-uppercase m-1">{{ errors('difficulty')[0] }}</p>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+
+                <!-- COUT -->
+                <div class="d-flex flex-column mt-2">
+                    {{ csrf_field()|raw }}
+                    {{ method('PATCH')|raw }}
+                    <div class="d-flex flex-column flex-sm-row align-items-center">
+                        <label for="cout" class="form-label text-main-blue col-sm-2">
+                            Coût
+                        </label>
+                        <select name="cout" id="cout" class="form-select mx-2">
+                            <option value="">--Choisissez le coût--</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-end">
+                        {% if errors('cout') %}
+                        <img src="/img/Warning_circle.png" alt="Warning_circle" class="m-1 warning_circle">
+                        {% endif %}
+                        {% if errors('cout') %}
+                        <p class="text-danger text-uppercase m-1">{{ errors('cout')[0] }}</p>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+
+                <!-- TEMPS -->
+
+                <div class="d-flex flex-column mt-2">
+                    {{ csrf_field()|raw }}
+                    {{ method('PATCH')|raw }}
+                    <div class="d-flex flex-column flex-sm-row align-items-center">
+                        <label for="temps" class="form-label text-main-blue col-sm-2">
+                            Temps
+                        </label>
+                        <input id="temps" name="temps" type="time" class="form-control mx-2">
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-end">
+                        {% if errors('temps') %}
+                        <img src="/img/Warning_circle.png" alt="Warning_circle" class="m-1 warning_circle">
+                        {% endif %}
+                        {% if errors('temps') %}
+                        <p class="text-danger text-uppercase m-1">{{ errors('temps')[0] }}</p>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+
+
+                <!-- DESCRIPTION -->
+                <div class="d-flex flex-column mt-2">
+                    {{ csrf_field()|raw }}
+                    {{ method('PATCH')|raw }}
+                    <div class="d-flex flex-column flex-sm-row align-items-center">
+                        <label for="description" class="form-label text-main-blue col-sm-2">
+                            Description
+                        </label>
+                        <input id="description" name="description"
+                            value="{{ old('description', recettes.description) }}" type="text"
+                            class="form-control mx-2">
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-end">
+                        {% if errors('description') %}
+                        <img src="/img/Warning_circle.png" alt="Warning_circle" class="m-1 warning_circle">
+                        {% endif %}
+                        {% if errors('description') %}
+                        <p class="text-danger text-uppercase m-1">{{ errors('description')[0] }}</p>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+                <!-- NOMBRE DE PERSONNES  -->
+                <div class="d-flex flex-column mt-2">
+                    {{ csrf_field()|raw }}
+                    {{ method('PATCH')|raw }}
+                    <div class="d-flex flex-column flex-sm-row align-items-center">
+                        <label for="nb_pax" class="form-label text-main-blue col-sm-2">
+                            Nombre de personne
+                        </label>
+                        <input id="nb_pax" name="nb_pax" value="{{ old('nb_pax', recettes.nb_pax) }}" type="text"
+                            class="form-control mx-2">
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-end">
+                        {% if errors('nb_pax') %}
+                        <img src="/img/Warning_circle.png" alt="Warning_circle" class="m-1 warning_circle">
+                        {% endif %}
+                        {% if errors('nb_pax') %}
+                        <p class="text-danger text-uppercase m-1">{{ errors('nb_pax')[0] }}</p>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+                <!-- LISTE INGREDIENTS -->
+                <div class="d-flex flex-column mt-2">
+                    {{ csrf_field()|raw }}
+                    {{ method('PATCH')|raw }}
+                    <div class="d-flex flex-column flex-sm-row align-items-center">
+                        <label for="nb_pax" class="form-label text-main-blue col-sm-2">
+                            Ingredients
+                        </label>
+                        <textarea id="ingredients" name="ingredients"
+                            class="form-control mx-2">{{ old('ingredients') }}</textarea>
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-end">
+                        {% if errors('ingredients') %}
+                        <img src="/img/Warning_circle.png" alt="Warning_circle" class="m-1 warning_circle">
+                        {% endif %}
+                        {% if errors('ingredients') %}
+                        <p class="text-danger text-uppercase m-1">{{ errors('ingredients')[0] }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- ETAPES -->
+                <div class="d-flex flex-column mt-2">
+                    {{ csrf_field()|raw }}
+                    {{ method('PATCH')|raw }}
+                    <div class="d-flex flex-column flex-sm-row align-items-center">
+                        <label for="etapes" class="form-label text-main-blue col-sm-2">
+                            Étapes
+                        </label>
+                        <textarea id="etapes" name="etapes" class="form-control mx-2">{{ old('etapes') }}</textarea>
+
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-end">
+                        {% if errors('etapes') %}
+                        <img src="/img/Warning_circle.png" alt="Warning_circle" class="m-1 warning_circle">
+                        {% endif %}
+                        {% if errors('etapes') %}
+                        <p class="text-danger text-uppercase m-1">{{ errors('etapes')[0] }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+
+                    <button type="submit" class="btn btn-main-red m-5 hover">
+                        Modifier
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    {% endif %}
+
+    {% include "includes/footer.html" %}
+</body>
+
+</html>

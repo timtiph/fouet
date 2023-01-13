@@ -1,0 +1,180 @@
+<!-- Page recettes -->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/img/fouet.png" type="image/x-icon">
+
+    <title>{{ recette.title }} | Les magiciens du Fouet | Tiphany</title>
+
+
+</head>
+
+<body>
+    {% include "includes/header.html" %}
+
+
+    <h2 class="text-uppercase text-main-red text-center">{{ recette.title }}</h2>
+
+    <h4 class="fst-italic text-center my-3">par
+        <a href="{{ route('cuisiniers.showCook', {slug: recette.cuisinier.slug}) }}" class="text-dark">{{
+            recette.cuisinier.name }}</a>
+    </h4>
+
+
+    {% include "includes/breadcrumbs.html" %}
+
+
+    {% if status() %}
+
+    <div class="d-flex align-items-center">
+        <img src="/img/Check.png" alt="check picto" class="m-1">
+        <p class="text-main-red fw-bolder m-1">
+            {{ status() }}
+        </p>
+    </div>
+
+    {% endif %}
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-item-center mx-2">
+        <div class="d-flex flex-column justify-content-evenly order-2 order-md-1 m-3">
+
+            <div class="d-flex mb-3">
+
+                <!-- ********************************* LE COUT  -->
+
+                <div class="d-flex m-3 justify-content-between" id="circle_€"></div>
+
+                <script type="text/javascript">
+
+                    for (let i = 0; i < ('{{ recette.cout }}'); i++) {
+
+                        var img = document.createElement("img");
+                        img.src = "/img/circle_€.png";
+                        img.alt = "picto €";
+                        img.setAttribute("style", "margin: 3px;");
+
+                        var div = document.getElementById("circle_€");
+                        div.appendChild(img);
+                        // console.log(i);
+                    }
+
+                </script>
+
+
+                <!-- *******************************LA DIFFICULTE -->
+
+
+                <div class="d-flex m-3" id="circle_fouet"></div>
+
+                <script type="text/javascript">
+
+                    for (let i = 0; i < ('{{ recette.difficulty }}'); i++) {
+
+                        var img = document.createElement("img");
+                        img.src = "/img/circle_fouet.png";
+                        img.alt = "picto €";
+                        img.setAttribute("style", "margin: 3px;");
+
+                        var div = document.getElementById("circle_fouet");
+                        div.appendChild(img);
+                        // console.log(i);
+                    }
+
+                </script>
+            </div>
+
+            <!-- ********************************   TEMPS -->
+            <p class="mb-3">temps de réalisation : {{ recette.temps|date('H:i') }}</p>
+
+            <!-- ********************************* DESCRIPTION -->
+            <p class="mb-3 fw-bolder">{{ recette.description }}</p>
+
+
+
+
+        </div>
+        <div style="max-width: 450px; max-height: 450px;" class="order-1 order-md-2 m-auto">
+            <img src="/img/{{ recette.img }}" alt="{{ recette.img }}" class="img-fluid">
+            <p class="text-secondary fst-italic text-end">
+                recette créée le
+                <time datetime="{{ recette.created_at }}" class="mt-0.5 text-sm text-gray-500">
+                    {{ recette.created_at|date('d/m/Y à H:i') }}
+                </time>
+            </p>
+        </div>
+
+    </div>
+    <div class="d-flex flex-column flex-md-row m-2 justify-content-evenly">
+
+        <!------------------------------------- LES INGREDIENTS  -->
+        <div class="col-md-3 ps-md-1 m-2">
+            <h4 class="text-main-red">Les ingrédients</h4>
+            <p class="fw-bolder">
+                {{ recette.ingredients|nl2br }} <!-- nl2br = retour à la ligne  -->
+            </p>
+        </div>
+        <!------------------------------------- LES ÉTAPES  -->
+        <div class="col-md-8 ps-md-1 m-2">
+            <h4 class="text-main-red">Les étapes</h4>
+            <p class="">
+                {{ recette.etapes|nl2br }} <!-- nl2br = retour à la ligne  -->
+            </p>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+    <div class="d-flex justify-content-center">
+
+        {% if auth().checkIsAdmin() %}
+
+        <button class="btn btn-main-red hover mt-5 mx-5" type="submit"><a class="text-decoration-none text-white"
+                href="{{ route('recettes.edit', {slug: recette.slug}) }}">Modifier</a>
+        </button>
+
+
+        <form action="{{ route('recettes.delete', {slug: recette.slug}) }}" method="POST" novalidate>
+            {{ csrf_field()|raw }}
+            {{ method('DELETE')|raw }}
+
+            <button onclick="modal = true" type="submit" class="btn btn-main-red hover mt-5 mx-5">
+                Supprimer
+            </button>
+
+        </form>
+
+        {% endif %}
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    {% include "includes/footer.html" %}
+
+
+</body>
+
+</html>

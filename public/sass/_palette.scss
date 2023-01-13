@@ -1,0 +1,43 @@
+$white-1: #FCFCFC;
+$grey-1: #7C7777;
+$grey-2: #BABABA;
+$main-red: #BA4745;
+$beige-1: #D4BBA5;
+$beige-2: #B68963;
+$main-blue: #2C72AD;
+
+
+$custom-theme-colors: (
+    "white-1": $white-1,
+    "grey-1": $grey-1,
+    "grey-2": $grey-2,
+    "main-red": $main-red,
+    "beige-1": $beige-1,
+    "beige-2": $beige-2,
+    "main-blue": $main-blue,
+);
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+@each $key, $val in $custom-theme-colors {
+  .bg-#{$key} {
+    background-color: $val!important;
+  }
+  .text-#{$key} {
+    color: $val!important;
+  }
+  .border-#{$key} {
+    border-color: $val!important;
+  }
+  .btn-#{$key} {
+    background-color: $val!important;
+
+  }
+  .btn-outline{
+    background-color: $val!important;
+  }
+
+  .btn-hover{
+    color: $val!important;
+  }
+}

@@ -1,0 +1,67 @@
+<header class="mb-2">
+
+    <div class="d-flex flex-lg-row flex-column justify-content-lg-between w-lg-100">
+
+        <div class="d-flex justify-content-center align-items-center m-xs-1 m-3 m-lg-5 w-lg-25">
+
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="m-1 hover">
+                <img src="/img/insta.png" alt="picto instagram">
+            </a>
+
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="hover m-1">
+                <img src="/img/FB.png" alt="picto face book" class="reseau">
+            </a>
+
+            <a href="https://www.pinterest.fr/" target="_blank" rel="noopener noreferrer" class="m-1 hover">
+                <img src="/img/Pinterest.png" alt="picto pinterest">
+            </a>
+
+        </div>
+
+
+        <div class="centre d-flex flex-column justify-content-center mt-3 w-lg-50">
+            <div class="hover d-flex m-auto justify-content-center mb-2">
+                <a href="{{ route('index') }}">
+                    <img src="/img/logo.png" alt="Logo Les magiciens du fouet" class="img-fluid">
+                </a>
+            </div>
+
+            <nav class="container-fluid mx-auto mt-2 w-sm-50 navbar navbar-collapse nav-header">
+                <ul class="container-fluid nav-bar list-unstyled justify-content-between">
+
+                    <li class="nav-item"><a href="{{ route('index') }}" class="mx-3 my-auto mb-1 hover "><img
+                                src="/img/home.png" alt="picto home"></a></li>
+                    <li class="nav-item"><a href="javascript:history.go(-1)" class="mx-3 my-auto hover"><img
+                                src="/img/back.png" alt="picto retour"></a></li>
+                    <li class="nav-item"><a href="{{ route('contact') }}"
+                            class="hover mx-3 my-auto text-decoration-none text-uppercase text-beige-2 fs-6">contact</a>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+
+        <ul class="d-flex flex-column justify-content-center text-align-center align-items-center p-0 m-xs-1 m-3 m-lg-5 w-lg-25">
+            <!-- <li class="d-flex justify-content-between flex-grow-1 border-bottom border-beige-2 pb-2 m-3">
+                <a href="{{ route('home') }}"
+                    class="text-beige-2 text-uppercase fs-6 mx-lg-2 hover text-decoration-none">cuisinier</a>
+                <img src="/img/Login.png" alt="picto login">
+            </li> -->
+            {% if auth().checkIsAdmin() %}
+            <li class="list-group-item list-group-custom hover"><a href="{{ route('home') }}">Mon compte</a></li>
+            <li class="list-group-item list-group-custom hover"><a href="{{ route('recettes.create') }}">Créer une recette</a></li>
+            <li class="list-group-item list-group-custom hover"><a href="{{ route('recettes.shows') }}">Voir mes recettes</a></li>
+            <li class="list-group-item list-group-custom hover">
+                <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a>
+                <form method="POST" action="{{ route('logout') }}" id="logout-form" class="hidden">
+                    {{ csrf_field()|raw }}
+                </form>
+            </li>
+            {% endif %}
+        </ul>
+
+    </div>
+
+
+</header>
